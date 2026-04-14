@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="om">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Asad Family — Tajaajila keenya beeksisuuf qophiidha. / Asad Family — We are ready to showcase our services." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Asad Family Website</title>
+  <style>
+    :root{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --muted:#475569;
+      --accent:#0ea5a2;
+      --maxw:900px;
+      --radius:12px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#ecfeff 60%);
+      color:#0f172a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(2,6,23,0.08);
+      padding:28px;
+      box-sizing:border-box;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:52px;
+      height:52px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#06b6d4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 18px rgba(14,165,162,0.18);
+    }
+    h1{margin:0 0 8px 0; font-size:1.6rem; line-height:1.15}
+    p{margin:0; color:var(--muted)}
+    .hero{padding:18px 0 22px}
+    .actions{margin-top:18px; display:flex; gap:10px; flex-wrap:wrap}
+    button{
+      background:var(--accent);
+      border:0;
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    button.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(14,165,162,0.16);
+    }
+    footer{margin-top:20px;color:var(--muted);font-size:0.9rem}
+    .locale-toggle{background:transparent;border:0;color:var(--muted);cursor:pointer;font-weight:600}
+    @media (prefers-reduced-motion: no-preference){
+      .logo{transition:transform .28s ease}
+      .logo:hover{transform:translateY(-3px)}
+      button{transition:transform .12s ease}
+      button:active{transform:translateY(1px)}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
+
+  <main class="container" id="main" role="main" aria-labelledby="page-title">
+    <header>
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">AF</div>
+        <div>
+          <div style="font-weight:700">Asad Family</div>
+          <div style="font-size:0.85rem;color:var(--muted)">We serve our community</div>
+        </div>
+      </div>
+
+      <div>
+        <button class="locale-toggle" id="langBtn" aria-label="Toggle language">English</button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title" lang="om">Baga Gara Weebsayitii Keenyaa Nagaan Dhuftan!</h1>
+      <p id="subtitle" lang="om">Tajaajila keenya beeksisuuf qophiidha.</p>
+
+      <div class="actions" role="region" aria-label="Primary actions">
+        <button id="learnBtn">Odeeffannoo Dabalataa / Learn more</button>
+        <button class="secondary" id="contactBtn">Nu Quunnamaa / Contact</button>
+      </div>
+    </section>
+
+    <section id="details" style="margin-top:18px;line-height:1.6">
+      <p style="color:var(--muted)">This simple page is responsive, accessible, and includes a language toggle. Replace the placeholder content with your services, images, and contact details.</p>
+    </section>
+
+    <footer>
+      <div>Contact: <a href="mailto:info@example.com">info@example.com</a></div>
+      <div style="margin-top:6px;font-size:0.85rem;color:var(--muted)">© Asad Family</div>
+    </footer>
+  </main>
+
+  <script>
+    // Simple bilingual toggle (Oromo <-> English). You can expand translations as needed.
+    (function(){
+      const translations = {
+        om: {
+          title: "Baga Gara Weebsayitii Keenyaa Nagaan Dhuftan!",
+          subtitle: "Tajaajila keenya beeksisuuf qophiidha.",
+          learn: "Odeeffannoo Dabalataa",
+          contact: "Nu Quunnamaa",
+          langLabel: "English"
+        },
+        en: {
+          title: "Welcome to Our Website!",
+          subtitle: "We are ready to showcase our services.",
+          learn: "Learn more",
+          contact: "Contact",
+          langLabel: "Afaan Oromoo"
+        }
+      };
+
+      let current = 'om';
+      const titleEl = document.getElementById('page-title');
+      const subtitleEl = document.getElementById('subtitle');
+      const learnBtn = document.getElementById('learnBtn');
+      const contactBtn = document.getElementById('contactBtn');
+      const langBtn = document.getElementById('langBtn');
+
+      function applyLang(lang){
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        titleEl.textContent = t.title;
+        titleEl.lang = lang;
+        subtitleEl.textContent = t.subtitle;
+        subtitleEl.lang = lang;
+        learnBtn.firstChild && learnBtn.removeChild(learnBtn.firstChild);
+        learnBtn.textContent = t.learn + " / " + (lang === 'om' ? 'Learn more' : 'Odeeffannoo Dabalataa');
+        contactBtn.textContent = t.contact + " / " + (lang === 'om' ? 'Contact' : 'Nu Quunnamaa');
+        langBtn.textContent = t.langLabel;
+      }
+
+      langBtn.addEventListener('click', () => {
+        current = (current === 'om') ? 'en' : 'om';
+        applyLang(current);
+      });
+
+      // initial
+      applyLang(current);
+    })();
+  </script>
+</body>
+</html>
